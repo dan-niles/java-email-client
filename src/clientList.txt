@@ -1,5 +1,0 @@
----- Format : receipient_type: <name>, <email>,<designation> -----
-
-Official: nimal,nimal@gmail.com,ceo
-Office_friend: kamal,kamal@gmail.com,clerk,2000/12/12
-Personal: sunil,<nick-name>,sunil@gmail.com,2000/10/10
