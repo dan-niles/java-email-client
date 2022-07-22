@@ -12,7 +12,7 @@ public class EmailClient {
         Scanner scanner = new Scanner(System.in);
         System.out.println(
                 "Enter option type: \n"
-                        + "0 - Exit"
+                        + "0 - Exit \n"
                         + "1 - Adding a new recipient\n"
                         + "2 - Sending an email\n"
                         + "3 - Printing out all the recipients who have birthdays\n"
@@ -65,7 +65,7 @@ public class EmailClient {
                     break;
                 case 5:
                     // Printing out the number of recipient objects in the application
-                    // code to print the number of recipient objects in the application
+                    System.out.println("No. of recipients : " + mailApp.getRecipientCount());
                     break;
 
             }

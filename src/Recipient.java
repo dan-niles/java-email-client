@@ -16,4 +16,8 @@ abstract public class Recipient {
     public String getEmail() {
         return email;
     }
+
+    public static Integer getCount() {
+        return count;
+    }
 }

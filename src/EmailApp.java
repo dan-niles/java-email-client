@@ -3,10 +3,13 @@ import java.util.ArrayList;
 public class EmailApp {
     String clientListFilePath = "clientList.txt";
     FileHandler clientListFile = new FileHandler(clientListFilePath);
+
     ArrayList<Recipient> recipientList = new ArrayList<>();
+    ArrayList<IBdayGreetable> birthDayList = new ArrayList<>();
 
     public EmailApp() {
         initRecipients();
+        System.out.println(birthDayList);
     }
 
     // Loads recipients from client list and populates recipientList
@@ -14,16 +17,18 @@ public class EmailApp {
         ArrayList<String> clientList = clientListFile.readLineByLine();
         for (String record : clientList) {
             Recipient recipientObj = stringToRecipient(record);
-            if (recipientObj != null)
-                recipientList.add(recipientObj);
+            recipientList.add(recipientObj);
+            if (recipientObj instanceof IBdayGreetable)
+                birthDayList.add((IBdayGreetable) recipientObj);
         }
     }
 
     // Create new recipient
     public void createRecipient(String record) {
         Recipient recipientObj = stringToRecipient(record);
-        if (recipientObj != null)
-            recipientList.add(recipientObj); // Add to recipientList
+        recipientList.add(recipientObj); // Add to recipientList
+        if (recipientObj instanceof IBdayGreetable)
+            birthDayList.add((IBdayGreetable) recipientObj);
         clientListFile.appendToFile(record); // Add to clientList file
     }
 
@@ -64,4 +69,10 @@ public class EmailApp {
 
         return recipientObj;
     }
+
+    // Returns the number of recipient objects in the application
+    public Integer getRecipientCount() {
+        return Recipient.getCount();
+    }
+
 }
