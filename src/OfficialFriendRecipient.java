@@ -1,4 +1,4 @@
-public class OfficialFriendRecipient extends OfficialRecipient{
+public class OfficialFriendRecipient extends OfficialRecipient implements IBdayGreetable {
     private String birthday;
 
     public OfficialFriendRecipient(String name, String email, String designation, String birthday) {
@@ -8,5 +8,9 @@ public class OfficialFriendRecipient extends OfficialRecipient{
 
     public String getBirthday() {
         return birthday;
+    }
+
+    public String getBdayMessage() {
+        return "Wish you a Happy Birthday. <your name>";
     }
 }

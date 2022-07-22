@@ -1,4 +1,4 @@
-public class PersonalRecipient extends Recipient{
+public class PersonalRecipient extends Recipient implements IBdayGreetable {
     private String birthday;
     private String nickName;
 
@@ -14,5 +14,9 @@ public class PersonalRecipient extends Recipient{
 
     public String getNickName() {
         return nickName;
+    }
+
+    public String getBdayMessage() {
+        return "Hugs and love on your birthday. <your name>";
     }
 }

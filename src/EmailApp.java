@@ -2,15 +2,14 @@ import java.util.ArrayList;
 
 public class EmailApp {
     String clientListFilePath = "clientList.txt";
-    FileHandler clientListFile;
-    ArrayList<Recipient> recipientList = new ArrayList<Recipient>();;
+    FileHandler clientListFile = new FileHandler(clientListFilePath);
+    ArrayList<Recipient> recipientList = new ArrayList<>();
 
     public EmailApp() {
-        clientListFile = new FileHandler(clientListFilePath);
         initRecipients();
-        System.out.println(recipientList);
     }
 
+    // Loads recipients from client list and populates recipientList
     private void initRecipients() {
         ArrayList<String> clientList = clientListFile.readLineByLine();
         for (String record : clientList) {
@@ -20,17 +19,23 @@ public class EmailApp {
         }
     }
 
-    public void addRecipient(String record) {
-        clientListFile.appendToFile(record);
+    // Create new recipient
+    public void createRecipient(String record) {
+        Recipient recipientObj = stringToRecipient(record);
+        if (recipientObj != null)
+            recipientList.add(recipientObj); // Add to recipientList
+        clientListFile.appendToFile(record); // Add to clientList file
     }
 
-    public Recipient stringToRecipient(String record) {
+    // Parses given string and returns a recipient object
+    public Recipient stringToRecipient(String record) throws IllegalArgumentException{
         String[] recordParts = record.split(":");
         String clientType = recordParts[0];
+        if (recordParts.length < 2)
+            throw new IllegalArgumentException("Error : Invalid recipient parameters.");
         String[] clientDetails = recordParts[1].split(",");
 
         String clientName, clientNickname, clientMail, clientBirthday, clientDesignation;
-
         Recipient recipientObj = null;
 
         clientName = clientDetails[0].trim();
@@ -51,6 +56,9 @@ public class EmailApp {
                 clientDesignation = clientDetails[2].trim();
                 clientBirthday = clientDetails[3].trim();
                 recipientObj = new OfficialFriendRecipient(clientName, clientMail, clientDesignation, clientBirthday);
+            }
+            default -> {
+                throw new IllegalArgumentException("Error : Invalid recipient type. Please use \"Personal\", \"Official\" or \"Office_friend\".");
             }
         }
 
