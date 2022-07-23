@@ -17,11 +17,10 @@ public class EmailApp {
     public EmailApp(String username, String password) {
         EmailApp.username = username;
         EmailApp.password = password;
-        initRecipients();
-        System.out.println(birthDayList);
+        initRecipients(); // Initialize recipients
     }
 
-    // Loads recipients from client list and populates recipientList
+    // Loads recipients from client list and populates recipientList and birthDayList
     private void initRecipients() {
         ArrayList<String> clientList = clientListFile.readLineByLine();
         for (String record : clientList) {
@@ -112,6 +111,19 @@ public class EmailApp {
         } catch (MessagingException e) {
             e.printStackTrace();
         }
+    }
+
+    // Returns list of recipients with given birthday
+    public ArrayList<Recipient> getRecipientsByBirthday(String bday) {
+        ArrayList<Recipient> returnList = new ArrayList<>();
+
+        for(IBdayGreetable recipientObj : birthDayList)
+        {
+            if (recipientObj.getBirthday().equals(bday))
+                returnList.add((Recipient) recipientObj);
+        }
+
+        return returnList;
     }
 
 }

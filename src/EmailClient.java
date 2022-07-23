@@ -4,6 +4,7 @@
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class EmailClient {
@@ -54,29 +55,31 @@ public class EmailClient {
                 case 2:
                     // Sending an email
                     // input format - email, subject, content
-//                    System.out.println("Input email, subject and content: ");
-//                    String mailString = s.nextLine();
-//                    String[] mailDetails = mailString.split(",");
-//
-//                    if (mailDetails.length < 3) {
-//                        System.out.println("Error: Invalid input. Make sure to enter all three parameters (Email, Subject, Content).");
-//                        continue;
-//                    }
+                    System.out.println("Input email, subject and content: ");
+                    String mailString = s.nextLine();
+                    String[] mailDetails = mailString.split(","); // Split input string into email, subject, content
 
-                    String[] mailDetails = new String[3];
+                    if (mailDetails.length < 3) { // Check if correct no. parameters are passed
+                        System.out.println("Error: Invalid input. Make sure to enter all three parameters (Email, Subject, Content).");
+                        continue;
+                    }
 
-                    mailDetails[0] = "niles_dan@live.com";
-                    mailDetails[1] = "Test";
-                    mailDetails[2] = "Hey there.";
-
+                    // Pass parameters to send email
                     mailApp.sendEmail(mailDetails[0], mailDetails[1], mailDetails[2]);
 
-                    // code to send an email
-                    break;
                 case 3:
                     // Printing out all the recipients who have birthdays
                     // input format - yyyy/MM/dd (ex: 2018/09/17)
-                    // code to print recipients who have birthdays on the given date
+                    System.out.println("Input date (YYYY/MM/DD): ");
+                    String str = s.nextLine();
+
+                    // Fetch recipients with given birthday
+                    ArrayList<Recipient> bdayList = mailApp.getRecipientsByBirthday(str);
+
+                    // Print names of fetched recipients
+                    for (Recipient recObj : bdayList) {
+                        System.out.println(recObj.getName());
+                    }
                     break;
                 case 4:
                     // Printing out details of all the emails sent
