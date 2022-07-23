@@ -67,8 +67,9 @@ public class EmailClient {
                         continue;
                     }
 
-                    // Pass parameters to send email
-                    MailHandler.sendEmail(mailDetails[0], mailDetails[1], mailDetails[2]);
+                    // Create new mail object and pass it to mail handler
+                    Mail mailObj = new Mail(mailDetails[0], mailDetails[1], mailDetails[2]);
+                    MailHandler.sendEmail(mailObj);
 
                     break;
                 case 3:

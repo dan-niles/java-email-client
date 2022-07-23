@@ -30,10 +30,11 @@ public class BirthdayHandler {
 
                 // Extract recipient email and custom message
                 String email = recipientObj.getEmail();
-                String message = recObj.getBdayMessage() + " " + MailHandler.getUserName() + ".";
                 String subject = "Birthday Greeting";
+                String message = recObj.getBdayMessage() + " " + MailHandler.getUserName() + ".";
 
-                MailHandler.sendEmail(email, subject, message); // Send email to recipient
+                Mail mailObj = new Mail(email, subject, message);
+                MailHandler.sendEmail(mailObj); // Send email to recipient
             }
         }
     }
