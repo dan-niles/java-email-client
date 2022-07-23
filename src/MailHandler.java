@@ -19,7 +19,7 @@ public class MailHandler {
         }
     }
 
-    private static final Boolean debugMode = true; // Set to true to send actual emails
+    private static final Boolean debugMode = false; // Set to true to send actual emails
 
     // Sends email via Gmail SMTP server
     public static void sendEmail(String email, String subject, String content) {
