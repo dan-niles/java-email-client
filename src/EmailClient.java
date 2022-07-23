@@ -1,13 +1,17 @@
 // Index No: 200421U
 // (remove the  public access modifier from classes when you submit your code)
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.Scanner;
 
 public class EmailClient {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
 
-        EmailApp mailApp = new EmailApp();
+        String pw = new String(Files.readAllBytes(Paths.get("Keys.txt")));
+        EmailApp mailApp = new EmailApp("mailtocftg@gmail.com", pw);
 
         Scanner scanner = new Scanner(System.in);
         System.out.println(
@@ -24,6 +28,7 @@ public class EmailClient {
             System.out.println("Enter option: ");
             int option = scanner.nextInt();
 
+            Scanner s = new Scanner(System.in);
             switch (option) {
                 case 0:
                     // Exit application
@@ -34,8 +39,6 @@ public class EmailClient {
                     //     Personal: daniel,dan,daniel@gmail.com,2000/10/10
                     //     Official: nimal,nimal@gmail.com,ceo
                     //     Office_friend: kamal,kamal@gmail.com,clerk,2000/12/12
-
-                    Scanner s = new Scanner(System.in);
                     System.out.println("Input new recipient: ");
                     String recipientDetails = s.nextLine();
 
@@ -51,6 +54,23 @@ public class EmailClient {
                 case 2:
                     // Sending an email
                     // input format - email, subject, content
+//                    System.out.println("Input email, subject and content: ");
+//                    String mailString = s.nextLine();
+//                    String[] mailDetails = mailString.split(",");
+//
+//                    if (mailDetails.length < 3) {
+//                        System.out.println("Error: Invalid input. Make sure to enter all three parameters (Email, Subject, Content).");
+//                        continue;
+//                    }
+
+                    String[] mailDetails = new String[3];
+
+                    mailDetails[0] = "niles_dan@live.com";
+                    mailDetails[1] = "Test";
+                    mailDetails[2] = "Hey there.";
+
+                    mailApp.sendEmail(mailDetails[0], mailDetails[1], mailDetails[2]);
+
                     // code to send an email
                     break;
                 case 3:
