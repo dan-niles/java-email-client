@@ -3,7 +3,6 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import java.text.DecimalFormat;
 import java.util.*;
-import java.time.LocalDate;
 
 public class EmailApp {
     private static String userName;
