@@ -1,18 +1,21 @@
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
+import java.util.Objects;
 import java.util.Properties;
 import java.util.ArrayList;
+import java.time.LocalDate;
 
 public class EmailApp {
     private static String username;
     private static String password;
+    private static final Boolean sendEmail = false; // Set to true to send actual emails
 
     private String clientListFilePath = "clientList.txt";
     private FileHandler clientListFile = new FileHandler(clientListFilePath);
 
-    private ArrayList<Recipient> recipientList = new ArrayList<>();
-    private ArrayList<IBdayGreetable> birthDayList = new ArrayList<>();
+    private ArrayList<Recipient> recipientList = new ArrayList<>(); // Stores recipients
+    private ArrayList<IBdayGreetable> birthDayList = new ArrayList<>(); // Stores recipients with birthdays
 
     public EmailApp(String username, String password) {
         EmailApp.username = username;
@@ -29,6 +32,11 @@ public class EmailApp {
             if (recipientObj instanceof IBdayGreetable)
                 birthDayList.add((IBdayGreetable) recipientObj);
         }
+    }
+
+    // Send birthday greetings
+    private void sendBirthdayGreetings() {
+
     }
 
     // Create new recipient
@@ -70,7 +78,8 @@ public class EmailApp {
                 clientBirthday = clientDetails[3].trim();
                 recipientObj = new OfficialFriendRecipient(clientName, clientMail, clientDesignation, clientBirthday);
             }
-            default -> throw new IllegalArgumentException("Error : Invalid recipient type. Please use \"Personal\", \"Official\" or \"Office_friend\".");
+            default ->
+                    throw new IllegalArgumentException("Error : Invalid recipient type. Please use \"Personal\", \"Official\" or \"Office_friend\".");
         }
 
         return recipientObj;
@@ -107,20 +116,31 @@ public class EmailApp {
             message.setSubject(subject);
             message.setText(content);
 
-            Transport.send(message);
+            if (sendEmail)
+                Transport.send(message);
         } catch (MessagingException e) {
             e.printStackTrace();
         }
     }
 
     // Returns list of recipients with given birthday
-    public ArrayList<Recipient> getRecipientsByBirthday(String bday) {
+    // Pass year as null to search only by date and month
+    public ArrayList<Recipient> getRecipientsByBirthday(String date, String month, String year) {
         ArrayList<Recipient> returnList = new ArrayList<>();
 
-        for(IBdayGreetable recipientObj : birthDayList)
-        {
-            if (recipientObj.getBirthday().equals(bday))
+        for (IBdayGreetable recipientObj : birthDayList) {
+            String[] bdayDetails = recipientObj.getBirthday().split("/");
+            String recYear = bdayDetails[0];
+            String recMonth = bdayDetails[1];
+            String recDate = bdayDetails[2];
+
+            // If year is not required for search
+            if (year == null)
+                recYear = null;
+
+            if (recDate.equals(date) && recMonth.equals(month) && Objects.equals(recYear, year))
                 returnList.add((Recipient) recipientObj);
+
         }
 
         return returnList;

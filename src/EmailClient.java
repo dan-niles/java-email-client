@@ -72,9 +72,13 @@ public class EmailClient {
                     // input format - yyyy/MM/dd (ex: 2018/09/17)
                     System.out.println("Input date (YYYY/MM/DD): ");
                     String str = s.nextLine();
+                    String[] bdayDetails = str.split("/");
+                    String year = bdayDetails[0];
+                    String month = bdayDetails[1];
+                    String date = bdayDetails[2];
 
                     // Fetch recipients with given birthday
-                    ArrayList<Recipient> bdayList = mailApp.getRecipientsByBirthday(str);
+                    ArrayList<Recipient> bdayList = mailApp.getRecipientsByBirthday(date, month, year);
 
                     // Check if returned list is not empty
                     if (bdayList.size() != 0) {
