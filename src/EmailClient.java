@@ -55,7 +55,7 @@ public class EmailClient {
                 case 2:
                     // Sending an email
                     // input format - email, subject, content
-                    System.out.println("Input email, subject and content: ");
+                    System.out.println("Input mail parameters (<email>,<subject>,<content>): ");
                     String mailString = s.nextLine();
                     String[] mailDetails = mailString.split(","); // Split input string into email, subject, content
 
@@ -76,11 +76,16 @@ public class EmailClient {
                     // Fetch recipients with given birthday
                     ArrayList<Recipient> bdayList = mailApp.getRecipientsByBirthday(str);
 
-                    // Print names of fetched recipients
-                    for (Recipient recObj : bdayList) {
-                        System.out.println(recObj.getName());
+                    // Check if returned list is not empty
+                    if (bdayList.size() != 0) {
+                        // Print names of fetched recipients
+                        for (Recipient recObj : bdayList) {
+                            System.out.println(recObj.getName());
+                        }
+                    } else {
+                        System.out.println("No recipients found with given birthday.");
                     }
-                    break;
+
                 case 4:
                     // Printing out details of all the emails sent
                     // input format - yyyy/MM/dd (ex: 2018/09/17)
