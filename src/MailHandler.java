@@ -45,7 +45,8 @@ public class MailHandler {
                     InternetAddress.parse(mailObj.getToEmail())
             );
             message.setSubject(mailObj.getSubject());
-            message.setText(mailObj.getContent());
+            message.setContent(mailObj.getContent(), "text/html");
+//            message.setText(mailObj.getContent());
 
             if (!debugMode)
                 Transport.send(message);
