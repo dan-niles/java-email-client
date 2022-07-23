@@ -17,6 +17,6 @@ public class PersonalRecipient extends Recipient implements IBdayGreetable {
     }
 
     public String getBdayMessage() {
-        return "Hugs and love on your birthday. <your name>";
+        return "Hugs and love on your birthday.";
     }
 }

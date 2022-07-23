@@ -12,12 +12,12 @@ public class EmailClient {
     public static void main(String[] args) throws IOException {
 
         String pw = new String(Files.readAllBytes(Paths.get("Keys.txt")));
-        EmailApp mailApp = new EmailApp("mailtocftg@gmail.com", pw);
+        EmailApp mailApp = new EmailApp("Dan Niles","mailtocftg@gmail.com", pw);
 
         Scanner scanner = new Scanner(System.in);
         System.out.println(
-                "Enter option type: \n"
-                        + "0 - Exit \n"
+                "Enter option type:\n"
+                        + "0 - Exit\n"
                         + "1 - Adding a new recipient\n"
                         + "2 - Sending an email\n"
                         + "3 - Printing out all the recipients who have birthdays\n"

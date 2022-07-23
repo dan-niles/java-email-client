@@ -11,6 +11,6 @@ public class OfficialFriendRecipient extends OfficialRecipient implements IBdayG
     }
 
     public String getBdayMessage() {
-        return "Wish you a Happy Birthday. <your name>";
+        return "Wish you a Happy Birthday.";
     }
 }

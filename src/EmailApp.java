@@ -1,15 +1,15 @@
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
-import java.util.Objects;
-import java.util.Properties;
-import java.util.ArrayList;
+import java.text.DecimalFormat;
+import java.util.*;
 import java.time.LocalDate;
 
 public class EmailApp {
-    private static String username;
-    private static String password;
-    private static final Boolean sendEmail = false; // Set to true to send actual emails
+    private static String userName;
+    private static String userEmail;
+    private static String userPassword;
+    private static final Boolean sendActualEmail = false; // Set to true to send actual emails
 
     private String clientListFilePath = "clientList.txt";
     private FileHandler clientListFile = new FileHandler(clientListFilePath);
@@ -17,10 +17,13 @@ public class EmailApp {
     private ArrayList<Recipient> recipientList = new ArrayList<>(); // Stores recipients
     private ArrayList<IBdayGreetable> birthDayList = new ArrayList<>(); // Stores recipients with birthdays
 
-    public EmailApp(String username, String password) {
-        EmailApp.username = username;
-        EmailApp.password = password;
+    public EmailApp(String userName, String userEmail, String userPassword) {
+        EmailApp.userName = userName;
+        EmailApp.userEmail = userEmail;
+        EmailApp.userPassword = userPassword;
+
         initRecipients(); // Initialize recipients
+        sendBirthdayGreetings(); // Send birthday greetings
     }
 
     // Loads recipients from client list and populates recipientList and birthDayList
@@ -34,9 +37,31 @@ public class EmailApp {
         }
     }
 
-    // Send birthday greetings
+    // Send birthday greetings to recipients who have birthdays today
     private void sendBirthdayGreetings() {
+        // Create calendar to get dates
+        Date today = new Date();
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(today);
+        // Get current day and month
+        String todayDate = new DecimalFormat("00").format(cal.get(Calendar.DAY_OF_MONTH));
+        String todayMonth = new DecimalFormat("00").format(cal.get(Calendar.MONTH)  + 1);
 
+        // Retrieve recipients who have birthdays today
+        ArrayList<Recipient> recList = getRecipientsByBirthday(todayDate, todayMonth, null);
+
+        if (!recList.isEmpty()) {
+            for (Recipient recipientObj : recList) {
+                IBdayGreetable recObj = (IBdayGreetable) recipientObj; // Cast Recipient type to IBdayGreetable
+
+                // Extract recipient email and custom message
+                String email = recipientObj.getEmail();
+                String message =  recObj.getBdayMessage() + " " + userName + ".";
+                String subject = "Birthday Greeting";
+
+                sendEmail(email, subject, message); // Send email to recipient
+            }
+        }
     }
 
     // Create new recipient
@@ -102,13 +127,13 @@ public class EmailApp {
         Session session = Session.getInstance(prop,
                 new javax.mail.Authenticator() {
                     protected PasswordAuthentication getPasswordAuthentication() {
-                        return new PasswordAuthentication(username, password);
+                        return new PasswordAuthentication(userEmail, userPassword);
                     }
                 });
 
         try {
             Message message = new MimeMessage(session);
-            message.setFrom(new InternetAddress(username));
+            message.setFrom(new InternetAddress(userEmail));
             message.setRecipients(
                     Message.RecipientType.TO,
                     InternetAddress.parse(email)
@@ -116,8 +141,9 @@ public class EmailApp {
             message.setSubject(subject);
             message.setText(content);
 
-            if (sendEmail)
+            if (sendActualEmail)
                 Transport.send(message);
+
         } catch (MessagingException e) {
             e.printStackTrace();
         }
