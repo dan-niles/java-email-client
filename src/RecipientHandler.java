@@ -66,8 +66,4 @@ public class RecipientHandler {
         return recipientObj;
     }
 
-    // Returns the number of recipient objects in the application
-    public static Integer getRecipientCount() {
-        return Recipient.getCount();
-    }
 }

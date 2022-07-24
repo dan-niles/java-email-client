@@ -103,7 +103,7 @@ public class EmailClient {
                     break;
                 case 5:
                     // Printing out the number of recipient objects in the application
-                    System.out.println("No. of recipients : " + RecipientHandler.getRecipientCount());
+                    System.out.println("No. of recipients : " + Recipient.getCount());
 
                     break;
 
