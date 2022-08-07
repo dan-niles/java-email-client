@@ -4,7 +4,9 @@
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class EmailClient {
@@ -43,7 +45,12 @@ public class EmailClient {
 
         while (true) {
             System.out.println(">> Enter option (0-5): ");
-            int option = scanner.nextInt();
+            int option = 0;
+            try {
+                option = scanner.nextInt();
+            } catch (InputMismatchException e) {
+                System.out.println("Error: Invalid option. Please enter a number between 0-5.");
+            }
 
             Scanner s = new Scanner(System.in);
             switch (option) {
@@ -92,6 +99,12 @@ public class EmailClient {
                     System.out.println("Input date (YYYY/MM/DD): ");
                     String str = s.nextLine();
                     String[] bdayDetails = str.split("/");
+
+                    if (bdayDetails.length < 3) { // Check for invalid inputs
+                        System.out.println("Error: Please enter date in correct format.");
+                        continue;
+                    }
+
                     String year = bdayDetails[0];
                     String month = bdayDetails[1];
                     String date = bdayDetails[2];
@@ -135,7 +148,9 @@ public class EmailClient {
                     System.out.println("No. of recipients : " + Recipient.getCount());
 
                     break;
-
+                default:
+                    System.out.println("Error: Invalid option.");
+                    break;
             }
         }
 

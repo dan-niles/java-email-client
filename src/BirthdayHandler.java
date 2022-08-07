@@ -1,6 +1,5 @@
 import java.text.DecimalFormat;
 import java.util.*;
-import java.util.stream.Collectors;
 
 public class BirthdayHandler {
     private static ArrayList<IBdayGreetable> birthDayList = new ArrayList<>(); // Stores recipients with birthdays
@@ -27,7 +26,7 @@ public class BirthdayHandler {
 
                 // Check if birthday greeting has already been sent
                 Mail result = MailHandler.getMailList().stream()
-                        .filter(item -> recipientObj.getEmail().equals(item.getToEmail()))
+                        .filter(item -> item.getToEmail().equals(recipientObj.getEmail()) && item.getSubject().equals("Birthday Greeting"))
                         .findAny()
                         .orElse(null);
 
