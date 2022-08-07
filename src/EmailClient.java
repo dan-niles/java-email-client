@@ -10,6 +10,18 @@ import java.util.Scanner;
 public class EmailClient {
 
     static {
+        String userPassword = null;
+        try {
+            userPassword = new String(Files.readAllBytes(Paths.get("Keys.txt")));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+        // Provide credentials here...
+        MailHandler.setUsername("Dan Niles");
+        MailHandler.setUserEmail("mailtocftg@gmail.com");
+        MailHandler.setUserPassword(userPassword);
+
         RecipientHandler.initRecipientList();  // Initialize recipients
         BirthdayHandler.sendBirthdayGreetings(); // Send birthday greetings
     }
@@ -100,6 +112,8 @@ public class EmailClient {
                     // Printing out details of all the emails sent
                     // input format - yyyy/MM/dd (ex: 2018/09/17)
                     // code to print the details of all the emails sent on the input date
+                    System.out.println("Input date (YYYY/MM/DD): ");
+                    String dateStr = s.nextLine();
                     break;
                 case 5:
                     // Printing out the number of recipient objects in the application

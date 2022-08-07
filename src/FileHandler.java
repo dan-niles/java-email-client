@@ -12,14 +12,14 @@ public class FileHandler {
     public ArrayList<String> readLineByLine() {
         ArrayList<String> recordList = new ArrayList<String>();
         try {
-            File file = new File(filePath);    // creates a new file instance
-            FileReader fr = new FileReader(file);   // reads the file
-            BufferedReader br = new BufferedReader(fr);  // creates a buffering character input stream
+            File file = new File(filePath);    // Creates a new file instance
+            FileReader fr = new FileReader(file);   // Reads the file
+            BufferedReader br = new BufferedReader(fr);  // Creates a buffering character input stream
             String line;
             while ((line = br.readLine()) != null) {
                 recordList.add(line);
             }
-            fr.close();    // closes the stream and release the resources
+            fr.close();    // Closes the stream and release the resources
         } catch (IOException e) {
             e.printStackTrace();
         }

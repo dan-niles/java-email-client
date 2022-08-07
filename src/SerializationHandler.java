@@ -2,14 +2,14 @@ import java.io.*;
 
 public class SerializationHandler {
 
-    public void serializeObj(Object obj) {
+    public static void serializeObj(Object obj, String fileName) {
         try {
-            FileOutputStream fileOut = new FileOutputStream("/tmp/employee.ser");
+            FileOutputStream fileOut = new FileOutputStream("ser/" + fileName + ".ser");
             ObjectOutputStream out = new ObjectOutputStream(fileOut);
             out.writeObject(obj);
             out.close();
             fileOut.close();
-            System.out.print("Serialized data is saved in /tmp/employee.ser");
+            System.out.println("Serialized.......");
         } catch (IOException i) {
             i.printStackTrace();
         }
