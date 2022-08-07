@@ -1,3 +1,4 @@
+import java.awt.*;
 import java.io.Serializable;
 
 public class Mail implements Serializable {
@@ -30,4 +31,5 @@ public class Mail implements Serializable {
     public void setDate(String date) {
         this.date = date;
     }
+
 }

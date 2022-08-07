@@ -1,6 +1,7 @@
 // Index No: 200421U
 // (Remove the  public access modifier from classes when you submit your code)
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -114,6 +115,20 @@ public class EmailClient {
                     // code to print the details of all the emails sent on the input date
                     System.out.println("Input date (YYYY/MM/DD): ");
                     String dateStr = s.nextLine();
+                    String[] dateArr = dateStr.split("/");
+                    dateStr = String.join("-", dateArr);
+
+                    try {
+                        ArrayList<Mail> mailList = (ArrayList<Mail>) SerializationHandler.deserializeObj("mails/" + dateStr + ".ser");
+                        for(Mail mail : mailList)
+                        {
+                            System.out.println("Sent to: " + mail.getToEmail() + " | Subject: " + mail.getSubject() + " | Content: " + mail.getContent());
+                        }
+                    } catch (IOException e) {
+                        System.out.println("No mails found for given date.");
+                        continue;
+                    }
+
                     break;
                 case 5:
                     // Printing out the number of recipient objects in the application

@@ -2,32 +2,28 @@ import java.io.*;
 
 public class SerializationHandler {
 
-    public static void serializeObj(Object obj, String fileName) {
+    public static void serializeObj(Object obj, String filePath) {
         try {
-            FileOutputStream fileOut = new FileOutputStream("ser/" + fileName + ".ser");
+            FileOutputStream fileOut = new FileOutputStream(filePath);
             ObjectOutputStream out = new ObjectOutputStream(fileOut);
             out.writeObject(obj);
             out.close();
             fileOut.close();
-            System.out.println("Serialized.......");
         } catch (IOException i) {
             i.printStackTrace();
         }
     }
 
-    public Object deserializeObj() {
+    public static Object deserializeObj(String filePath) throws IOException {
         Object obj = null;
         try {
-            FileInputStream fileIn = new FileInputStream("/tmp/employee.ser");
+            FileInputStream fileIn = new FileInputStream(filePath);
             ObjectInputStream in = new ObjectInputStream(fileIn);
             obj = in.readObject();
             in.close();
             fileIn.close();
-        } catch (IOException i) {
-            i.printStackTrace();
-        } catch (ClassNotFoundException c) {
-            System.out.println("Employee class not found");
-            c.printStackTrace();
+        } catch (IOException | ClassNotFoundException i) {
+            throw new IOException();
         }
 
         return obj;

@@ -31,7 +31,7 @@ public class BirthdayHandler {
                 // Extract recipient email and custom message
                 String email = recipientObj.getEmail();
                 String subject = "Birthday Greeting";
-                String message = recObj.getBdayMessage() + "<br/><br/>" + MailHandler.getUserName();
+                String message = recObj.getBdayMessage() + " Best Regards, " + MailHandler.getUserName();
 
                 Mail mailObj = new Mail(email, subject, message);
                 MailHandler.sendEmail(mailObj); // Send email to recipient

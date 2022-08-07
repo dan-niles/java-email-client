@@ -2,10 +2,8 @@ import javax.mail.*;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import java.io.UnsupportedEncodingException;
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.Properties;
 
 public class MailHandler {
@@ -43,15 +41,14 @@ public class MailHandler {
             message.setSubject(mailObj.getSubject());
             message.setContent(mailObj.getContent(), "text/html");
 
-            DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-            Date date = new Date();
-            mailObj.setDate(dateFormat.format(date));
+            String date = new SimpleDateFormat("yyyy-MM-dd").format(new java.util.Date());
+            mailObj.setDate(date);
 
             if (!debugMode)
                 Transport.send(message);
 
             mailList.add(mailObj); // Add mail to mailList
-            SerializationHandler.serializeObj(mailObj, mailObj.getDate());
+            SerializationHandler.serializeObj(mailList, "mails/" + mailObj.getDate() + ".ser"); // Serialize mailList
 
         } catch (MessagingException e) {
             e.printStackTrace();
