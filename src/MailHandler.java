@@ -1,7 +1,11 @@
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
+import java.io.File;
+import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Properties;
@@ -14,6 +18,21 @@ public class MailHandler {
     private static String userPassword;
 
     private static ArrayList<Mail> mailList = new ArrayList<>(); // Stores mail objects
+
+    static {
+        // Create folder for serialized mails if it does not exist
+        String path = "mails";
+        File pathAsFile = new File(path);
+        if (!Files.exists(Paths.get(path))) {
+            pathAsFile.mkdir();
+        }
+
+        // Preload all emails sent today
+        try {
+            String today = new SimpleDateFormat("yyyy-MM-dd").format(new java.util.Date());
+            mailList = (ArrayList<Mail>) SerializationHandler.deserializeObj("mails/" + today + ".ser");
+        } catch (IOException ignored) {}
+    }
 
     // Sends email via Gmail SMTP server
     public static void sendEmail(Mail mailObj) {

@@ -4,12 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7901d806-35f8-42c1-8521-fde87654cbcd" name="Changes" comment="Move credentials config from MailHandler to EmailClient">
+    <list default="true" id="7901d806-35f8-42c1-8521-fde87654cbcd" name="Changes" comment="Add mail serialization functionality">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BirthdayHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BirthdayHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/EmailClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/EmailClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Mail.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Mail.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/FileHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FileHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/MailHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MailHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/RecipientHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/RecipientHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/SerializationHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SerializationHandler.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -245,7 +245,14 @@
       <option name="project" value="LOCAL" />
       <updated>1659871170581</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="Add mail serialization functionality">
+      <created>1659874485190</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1659874485190</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -278,9 +285,10 @@
     <MESSAGE value="Add support for HTML mail content" />
     <MESSAGE value="Remove getRecipientCount method from RecipientHandler" />
     <MESSAGE value="Move credentials config from MailHandler to EmailClient" />
-    <option name="LAST_COMMIT_MESSAGE" value="Move credentials config from MailHandler to EmailClient" />
+    <MESSAGE value="Add mail serialization functionality" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add mail serialization functionality" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/EmailClient$EmailClient.ic" NAME="EmailClient Coverage Results" MODIFIED="1659870569130" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/EmailClient$EmailClient.ic" NAME="EmailClient Coverage Results" MODIFIED="1659876346011" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>

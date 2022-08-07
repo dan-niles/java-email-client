@@ -30,8 +30,9 @@ public class EmailClient {
     public static void main(String[] args) throws IOException {
 
         Scanner scanner = new Scanner(System.in);
+        System.out.println("Welcome, " + MailHandler.getUserName() + "!");
         System.out.println(
-                "Enter option type:\n"
+                "Mail Application Options:\n"
                         + "0 - Exit\n"
                         + "1 - Adding a new recipient\n"
                         + "2 - Sending an email\n"
@@ -41,7 +42,7 @@ public class EmailClient {
         );
 
         while (true) {
-            System.out.println("Enter option (0-5): ");
+            System.out.println(">> Enter option (0-5): ");
             int option = scanner.nextInt();
 
             Scanner s = new Scanner(System.in);

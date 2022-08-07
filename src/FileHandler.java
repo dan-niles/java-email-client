@@ -1,4 +1,6 @@
 import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 
 public class FileHandler {
@@ -6,6 +8,15 @@ public class FileHandler {
 
     public FileHandler(String filePath) {
         this.filePath = filePath;
+
+        // Create file if it does not exist
+        File file = new File(filePath);
+        if (!Files.exists(Paths.get(filePath))) {
+            try {
+                file.createNewFile();
+            } catch (IOException ignored) {
+            }
+        }
     }
 
     // Returns a list of each line in the file

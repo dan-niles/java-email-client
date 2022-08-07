@@ -2,6 +2,7 @@ import java.io.*;
 
 public class SerializationHandler {
 
+    // Serializes the given object to the given file path
     public static void serializeObj(Object obj, String filePath) {
         try {
             FileOutputStream fileOut = new FileOutputStream(filePath);
@@ -14,6 +15,7 @@ public class SerializationHandler {
         }
     }
 
+    // Deserializes an object from the given file path
     public static Object deserializeObj(String filePath) throws IOException {
         Object obj = null;
         try {
