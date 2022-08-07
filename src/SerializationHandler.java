@@ -17,7 +17,7 @@ public class SerializationHandler {
 
     // Deserializes an object from the given file path
     public static Object deserializeObj(String filePath) throws IOException {
-        Object obj = null;
+        Object obj;
         try {
             FileInputStream fileIn = new FileInputStream(filePath);
             ObjectInputStream in = new ObjectInputStream(fileIn);

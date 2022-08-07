@@ -21,7 +21,7 @@ public class FileHandler {
 
     // Returns a list of each line in the file
     public ArrayList<String> readLineByLine() {
-        ArrayList<String> recordList = new ArrayList<String>();
+        ArrayList<String> recordList = new ArrayList<>();
         try {
             File file = new File(filePath);    // Creates a new file instance
             FileReader fr = new FileReader(file);   // Reads the file
@@ -40,7 +40,7 @@ public class FileHandler {
 
     // Appends given line to the file
     public void appendToFile(String line) {
-        try (FileWriter f = new FileWriter(filePath, true); BufferedWriter b = new BufferedWriter(f); PrintWriter p = new PrintWriter(b);) {
+        try (FileWriter f = new FileWriter(filePath, true); BufferedWriter b = new BufferedWriter(f); PrintWriter p = new PrintWriter(b)) {
             p.println(line);
         } catch (IOException i) {
             i.printStackTrace();

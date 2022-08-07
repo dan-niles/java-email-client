@@ -1,7 +1,6 @@
 // Index No: 200421U
 // (Remove the  public access modifier from classes when you submit your code)
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -11,7 +10,7 @@ import java.util.Scanner;
 public class EmailClient {
 
     static {
-        String userPassword = null;
+        String userPassword;
         try {
             userPassword = new String(Files.readAllBytes(Paths.get("Keys.txt")));
         } catch (IOException e) {
@@ -27,18 +26,19 @@ public class EmailClient {
         BirthdayHandler.sendBirthdayGreetings(); // Send birthday greetings
     }
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
 
         Scanner scanner = new Scanner(System.in);
         System.out.println("Welcome, " + MailHandler.getUserName() + "!");
         System.out.println(
-                "Mail Application Options:\n"
-                        + "0 - Exit\n"
-                        + "1 - Adding a new recipient\n"
-                        + "2 - Sending an email\n"
-                        + "3 - Printing out all the recipients who have birthdays\n"
-                        + "4 - Printing out details of all the emails sent\n"
-                        + "5 - Printing out the number of recipient objects in the application"
+                """
+                        Mail Application Options:
+                        0 - Exit
+                        1 - Adding a new recipient
+                        2 - Sending an email
+                        3 - Printing out all the recipients who have birthdays
+                        4 - Printing out details of all the emails sent
+                        5 - Printing out the number of recipient objects in the application"""
         );
 
         while (true) {
@@ -121,8 +121,7 @@ public class EmailClient {
 
                     try {
                         ArrayList<Mail> mailList = (ArrayList<Mail>) SerializationHandler.deserializeObj("mails/" + dateStr + ".ser");
-                        for(Mail mail : mailList)
-                        {
+                        for (Mail mail : mailList) {
                             System.out.println("Sent to: " + mail.getToEmail() + " | Subject: " + mail.getSubject() + " | Content: " + mail.getContent());
                         }
                     } catch (IOException e) {
