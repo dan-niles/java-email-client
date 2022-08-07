@@ -15,10 +15,10 @@ public class BirthdayHandler {
         Calendar cal = Calendar.getInstance();
         cal.setTime(today);
         // Get current day and month
-        String todayDate = new DecimalFormat("00").format(cal.get(Calendar.DAY_OF_MONTH));
-        String todayMonth = new DecimalFormat("00").format(cal.get(Calendar.MONTH) + 1);
+        int todayDate = cal.get(Calendar.DAY_OF_MONTH);
+        int todayMonth = cal.get(Calendar.MONTH) + 1;
 
-        ArrayList<Recipient> recList = getRecipientsByBirthday(todayDate, todayMonth, null); // Retrieve recipients who have birthdays today
+        ArrayList<Recipient> recList = getRecipientsByBirthday(todayDate, todayMonth, 0); // Retrieve recipients who have birthdays today
 
         if (!recList.isEmpty()) {
             for (Recipient recipientObj : recList) {
@@ -46,21 +46,21 @@ public class BirthdayHandler {
     }
 
     // Returns list of recipients with given birthday
-    // Pass year as null to search only by date and month
-    public static ArrayList<Recipient> getRecipientsByBirthday(String date, String month, String year) {
+    // Pass year as 0 to search only by date and month
+    public static ArrayList<Recipient> getRecipientsByBirthday(int date, int month, int year) {
         ArrayList<Recipient> returnList = new ArrayList<>();
 
         for (IBdayGreetable recipientObj : birthDayList) {
             String[] bdayDetails = recipientObj.getBirthday().split("/");
-            String recYear = bdayDetails[0];
-            String recMonth = bdayDetails[1];
-            String recDate = bdayDetails[2];
+            int recYear = Integer.parseInt(bdayDetails[0]);
+            int recMonth = Integer.parseInt(bdayDetails[1]);
+            int recDate = Integer.parseInt(bdayDetails[2]);
 
             // If year is not required for search
-            if (year == null)
-                recYear = null;
+            if (year == 0)
+                recYear = 0;
 
-            if (recDate.equals(date) && recMonth.equals(month) && Objects.equals(recYear, year))
+            if (recDate == date && recMonth == month && recYear == year)
                 returnList.add((Recipient) recipientObj);
 
         }

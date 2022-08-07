@@ -4,7 +4,6 @@
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -105,9 +104,9 @@ public class EmailClient {
                         continue;
                     }
 
-                    String year = bdayDetails[0];
-                    String month = bdayDetails[1];
-                    String date = bdayDetails[2];
+                    int year = Integer.parseInt(bdayDetails[0]);
+                    int month = Integer.parseInt(bdayDetails[1]);
+                    int date = Integer.parseInt(bdayDetails[2]);
 
                     // Fetch recipients with given birthday
                     ArrayList<Recipient> bdayList = BirthdayHandler.getRecipientsByBirthday(date, month, year);
