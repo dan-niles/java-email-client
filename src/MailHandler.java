@@ -81,6 +81,10 @@ public class MailHandler {
         return userName;
     }
 
+    public static ArrayList<Mail> getMailList() {
+        return mailList;
+    }
+
     public static void setUsername(String userName) {
         MailHandler.userName = userName;
     }

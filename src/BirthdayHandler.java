@@ -1,13 +1,10 @@
 import java.text.DecimalFormat;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.Objects;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class BirthdayHandler {
     private static ArrayList<IBdayGreetable> birthDayList = new ArrayList<>(); // Stores recipients with birthdays
 
-    // Initialize birthday list
     public static void appendToBirthdayList(IBdayGreetable recipientObj) {
         birthDayList.add(recipientObj);
     }
@@ -27,6 +24,16 @@ public class BirthdayHandler {
         if (!recList.isEmpty()) {
             for (Recipient recipientObj : recList) {
                 IBdayGreetable recObj = (IBdayGreetable) recipientObj; // Cast Recipient type to IBdayGreetable
+
+                // Check if birthday greeting has already been sent
+                Mail result = MailHandler.getMailList().stream()
+                        .filter(item -> recipientObj.getEmail().equals(item.getToEmail()))
+                        .findAny()
+                        .orElse(null);
+
+                if (result != null) { // If greeting is already sent, skip sending again
+                    continue;
+                }
 
                 // Extract recipient email and custom message
                 String email = recipientObj.getEmail();

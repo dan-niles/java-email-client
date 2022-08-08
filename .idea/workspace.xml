@@ -4,15 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7901d806-35f8-42c1-8521-fde87654cbcd" name="Changes" comment="Add checks for clientList.txt and mails folder">
+    <list default="true" id="7901d806-35f8-42c1-8521-fde87654cbcd" name="Changes" comment="Fix minor warnings">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/EmailClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/EmailClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FileHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FileHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/IBdayGreetable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/IBdayGreetable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Mail.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Mail.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PersonalRecipient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PersonalRecipient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/RecipientHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/RecipientHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/SerializationHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SerializationHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/clientList.txt" beforeDir="false" afterPath="$PROJECT_DIR$/clientList.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BirthdayHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BirthdayHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MailHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MailHandler.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -261,7 +257,14 @@
       <option name="project" value="LOCAL" />
       <updated>1659876537420</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="Fix minor warnings">
+      <created>1659876974446</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1659876974446</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -296,7 +299,8 @@
     <MESSAGE value="Move credentials config from MailHandler to EmailClient" />
     <MESSAGE value="Add mail serialization functionality" />
     <MESSAGE value="Add checks for clientList.txt and mails folder" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add checks for clientList.txt and mails folder" />
+    <MESSAGE value="Fix minor warnings" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix minor warnings" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/EmailClient$EmailClient.ic" NAME="EmailClient Coverage Results" MODIFIED="1659876346011" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
