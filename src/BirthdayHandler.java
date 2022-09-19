@@ -1,12 +1,7 @@
-import java.text.DecimalFormat;
 import java.util.*;
 
 public class BirthdayHandler {
     private static ArrayList<IBdayGreetable> birthDayList = new ArrayList<>(); // Stores recipients with birthdays
-
-    public static void appendToBirthdayList(IBdayGreetable recipientObj) {
-        birthDayList.add(recipientObj);
-    }
 
     // Send birthday greetings to recipients who have birthdays today
     public static void sendBirthdayGreetings() {
@@ -66,5 +61,10 @@ public class BirthdayHandler {
         }
 
         return returnList;
+    }
+
+    // Appends given recipient to birthday list
+    public static void appendToBirthdayList(IBdayGreetable recipientObj) {
+        birthDayList.add(recipientObj);
     }
 }

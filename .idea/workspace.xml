@@ -4,10 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7901d806-35f8-42c1-8521-fde87654cbcd" name="Changes" comment="Add checks for invalid inputs">
+    <list default="true" id="7901d806-35f8-42c1-8521-fde87654cbcd" name="Changes" comment="Convert getRecipientsByBirthday method parameters from String to int">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/clientList.txt" beforeDir="false" afterPath="$PROJECT_DIR$/clientList.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/BirthdayHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BirthdayHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/EmailClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/EmailClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/FileHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FileHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MailHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MailHandler.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,6 +27,7 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RESET_MODE" value="HARD" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -83,6 +87,20 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Streams" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Streams" />
+      <module name="EmailClient" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Test" />
+      <module name="EmailClient" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration default="true" type="JetRunConfigurationType">
       <method v="2">
         <option name="Make" enabled="true" />
@@ -95,13 +113,17 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="Application.Email_Client" />
+      <item itemvalue="Application.Test" />
       <item itemvalue="Application.EmailApp" />
       <item itemvalue="Application.EmailClient" />
+      <item itemvalue="Application.Email_Client" />
+      <item itemvalue="Application.Streams" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Application.EmailClient" />
+        <item itemvalue="Application.Test" />
+        <item itemvalue="Application.Streams" />
         <item itemvalue="Application.EmailApp" />
         <item itemvalue="Application.Email_Client" />
       </list>
@@ -277,7 +299,14 @@
       <option name="project" value="LOCAL" />
       <updated>1659887738288</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="Convert getRecipientsByBirthday method parameters from String to int">
+      <created>1659888318319</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1659888318319</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -315,7 +344,8 @@
     <MESSAGE value="Fix minor warnings" />
     <MESSAGE value="Fix sending birthday greetings multiple times" />
     <MESSAGE value="Add checks for invalid inputs" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add checks for invalid inputs" />
+    <MESSAGE value="Convert getRecipientsByBirthday method parameters from String to int" />
+    <option name="LAST_COMMIT_MESSAGE" value="Convert getRecipientsByBirthday method parameters from String to int" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/EmailClient$EmailClient.ic" NAME="EmailClient Coverage Results" MODIFIED="1659876346011" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />

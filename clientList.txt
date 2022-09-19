@@ -2,10 +2,9 @@ Official: nimal,nimal@gmail.com,ceo
 Office_friend: kamal,kamal@gmail.com,clerk,2000/12/12
 Personal: sunil,sunil,sunil@gmail.com,2000/10/10
 Official: kamal,kamal@gmail.com,cfo
-Official: kamal,kamal@gmail.com,cfo
-Official: kamal,kamal@gmail.com,cfo
 Personal: dan1,dan,danniles78@gmail.com,2000/02/23
 Personal: dan2,dan,danniles78@gmail.com,2000/02/23
-Office_friend: dan3,danniles78@gmail.com,engineer,2002/08/07
+Office_friend: dan3,danniles78@gmail.com,engineer,2002/09/19
 Personal: dan4,dan,danniles78@gmail.com,2001/02/23
-Personal: asher,ash,niles_dan@live.com,2008/08/07
+Personal: John,John,john@gmail.com,2000/02/23
+Office_friend: dan_niles,danniles78@gmail.com,engineer,2000/09/19

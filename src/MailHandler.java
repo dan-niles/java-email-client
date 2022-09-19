@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.Properties;
 
 public class MailHandler {
-    private static final Boolean debugMode = true; // Set as false to send actual emails
+    private static final Boolean debugMode = false; // Set as false to send actual emails
 
     private static String userName;
     private static String userEmail;

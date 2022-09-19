@@ -149,6 +149,7 @@ public class EmailClient {
                     break;
                 default:
                     System.out.println("Error: Invalid option.");
+
                     break;
             }
         }
