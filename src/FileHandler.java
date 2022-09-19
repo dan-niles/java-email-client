@@ -20,13 +20,13 @@ public class FileHandler {
     }
 
     // Returns a list of each line in the file
-    public ArrayList<String> readLineByLine() throws IOException {
+    public ArrayList<String> readLineByLine() {
         ArrayList<String> recordList = new ArrayList<>();
-        FileReader fr = null;
+        BufferedReader br = null;
         try {
             File file = new File(filePath);    // Creates a new file instance
-            fr = new FileReader(file);   // Reads the file
-            BufferedReader br = new BufferedReader(fr);  // Creates a buffering character input stream
+            FileReader fr = new FileReader(file);   // Reads the file
+            br = new BufferedReader(fr);  // Creates a buffering character input stream
             String line;
             while ((line = br.readLine()) != null) {
                 recordList.add(line);
@@ -34,8 +34,10 @@ public class FileHandler {
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
-            if (fr != null) {
-                fr.close();    // Closes the stream and release the resources
+            if (br != null) {
+                try {
+                    br.close();    // Closes the stream and release the resources
+                } catch (Exception ignored) {}
             }
         }
 
@@ -43,16 +45,18 @@ public class FileHandler {
     }
 
     // Appends given line to the file
-    public void appendToFile(String line) throws IOException {
-        FileWriter f = null;
+    public void appendToFile(String line) {
+        PrintWriter p = null;
         try {
-            f = new FileWriter(filePath, true); BufferedWriter b = new BufferedWriter(f); PrintWriter p = new PrintWriter(b);
+            FileWriter f = new FileWriter(filePath, true); BufferedWriter b = new BufferedWriter(f); p = new PrintWriter(b);
             p.println(line);
         } catch (IOException i) {
             i.printStackTrace();
         } finally {
-            if (f != null) {
-                f.close();
+            if (p != null) {
+                try {
+                    p.close();
+                } catch (Exception ignored) {}
             }
         }
     }
