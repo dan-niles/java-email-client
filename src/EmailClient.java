@@ -63,11 +63,15 @@ public class EmailClient {
                     //     Official: <name>,<email>,<designation>
                     //     Office_friend: <name>,<email>,<designation>,<birthday>
                     System.out.println("Input new recipient: ");
+                    System.out.println("( Personal: <name>,<nickname>,<email>,<birthday> )");
+                    System.out.println("( Official: <name>,<email>,<designation> )");
+                    System.out.println("( Office_friend: <name>,<email>,<designation>,<birthday> )");
                     String recipientDetails = s.nextLine();
 
                     // Catch exceptions for invalid input
                     try {
                         RecipientHandler.createRecipient(recipientDetails);
+                        System.out.println("New recipient added successfully!");
                     } catch (IllegalArgumentException e) {
                         System.out.println(e.getMessage());
                     } catch (ArrayIndexOutOfBoundsException e) {
@@ -87,9 +91,12 @@ public class EmailClient {
                         continue;
                     }
 
-                    // Create new mail object and pass it to mail handler
-                    Mail mailObj = new Mail(mailDetails[0], mailDetails[1], mailDetails[2]);
-                    MailHandler.sendEmail(mailObj);
+                    try {
+                        // Create new mail object and pass it to mail handler
+                        Mail mailObj = new Mail(mailDetails[0], mailDetails[1], mailDetails[2]);
+                        MailHandler.sendEmail(mailObj);
+                        System.out.println("Email sent successfully!");
+                    } catch (Exception ignored) {}
 
                     break;
                 case 3:

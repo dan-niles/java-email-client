@@ -9,5 +9,7 @@ Personal: dan4,dan,danniles78@gmail.com,2001/02/23
 Personal: John,John,john@gmail.com,2000/02/23
 Office_friend: dan_niles,danniles78@gmail.com,engineer,2000/09/19
 Personal: sunil,sunil,sunil@gmail.com,2000/10/10
-Personal: sunil,sunil,sunil@gmail.com,2000/10/10
 Personal: dan4,dan,danniles78@gmail.com,2001/02/23
+Personal: dan,danny,niles@uom.lk,2000/02/13
+Official: jack,jack@uom.lk,student
+Office_friend: tom,tom@uom.lk,student,2001/04/02

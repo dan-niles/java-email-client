@@ -4,28 +4,43 @@ public class SerializationHandler {
 
     // Serializes the given object to the given file path
     public static void serializeObj(Object obj, String filePath) {
+        FileOutputStream fileOut = null;
+        ObjectOutputStream out = null;
         try {
-            FileOutputStream fileOut = new FileOutputStream(filePath);
-            ObjectOutputStream out = new ObjectOutputStream(fileOut);
+            fileOut = new FileOutputStream(filePath);
+            out = new ObjectOutputStream(fileOut);
             out.writeObject(obj);
-            out.close();
-            fileOut.close();
         } catch (IOException i) {
             i.printStackTrace();
+        } finally {
+            if (out != null) {
+                try {
+                    fileOut.close();
+                    out.close();
+                } catch (Exception ignored) {}
+            }
         }
     }
 
     // Deserializes an object from the given file path
     public static Object deserializeObj(String filePath) throws IOException {
         Object obj;
+        FileInputStream fileIn = null;
+        ObjectInputStream in = null;
         try {
-            FileInputStream fileIn = new FileInputStream(filePath);
-            ObjectInputStream in = new ObjectInputStream(fileIn);
+            fileIn = new FileInputStream(filePath);
+            in = new ObjectInputStream(fileIn);
             obj = in.readObject();
-            in.close();
-            fileIn.close();
+
         } catch (IOException | ClassNotFoundException i) {
             throw new IOException();
+        } finally {
+            try {
+                if (in != null) {
+                    in.close();
+                    fileIn.close();
+                }
+            } catch (Exception ignored) {}
         }
 
         return obj;
